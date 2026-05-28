@@ -104,7 +104,7 @@
                         <div class="bg-blue-100 text-blue-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm mr-3 shrink-0">3</div>
                         <div>
                             <p class="font-semibold text-sm">รอรับใบเสร็จ</p>
-                            <p class="text-xs text-slate-500">ตรวจสอบได้จากลิงก์ดาวน์โหลดด้านล่าง</p>
+                            <p class="text-xs text-slate-500">ตรวจสอบได้จากปุ่มค้นหาใบเสร็จด้านล่าง</p>
                         </div>
                     </li>
                 </ul>
@@ -148,7 +148,7 @@
         <!-- Sticky Bottom CTA -->
         <div class="fixed bottom-0 left-0 w-full z-50">
             <div class="max-w-md mx-auto bg-white border-t border-slate-200 p-4 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] flex gap-3">
-                <a href="https://forms.gle/egMzg1aqrర్చి5ovB68" target="_blank" class="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-center py-3 px-4 rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex flex-col items-center justify-center">
+                <a href="https://forms.gle/egMzg1aqrYC5ovB68" target="_blank" class="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-center py-3 px-4 rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex flex-col items-center justify-center">
                     <span><i class="fas fa-pen-to-square mr-1"></i> กรอกฟอร์มสั่งซื้อ</span>
                     <span class="text-[10px] font-normal opacity-80 mt-0.5">แนบสลิป & เลือกไซส์</span>
                 </a>
@@ -260,8 +260,6 @@
         }
 
         function printReceipt() {
-            // เก็บสถานะเดิมไว้
-            const originalContents = document.body.innerHTML;
             // เอาเฉพาะส่วนใบเสร็จมาพิมพ์
             const printContents = document.getElementById('receipt-box').outerHTML;
             
@@ -350,9 +348,8 @@
             errorMsg.classList.add('hidden');
             container.classList.add('hidden');
 
-            // --- ส่วนที่ต้องแก้ไข: นำลิงก์ Web App API มาใส่ที่นี่ ---
-            // นำลิงก์จาก Apps Script (Publish > Deploy as web app) วางแทนค่า API_URL
-            const API_URL = 'https://script.google.com/macros/s/AKfycbyA77rTgTOvGMzW8LDpIP1fI3LDAxFpPk45S3H3hhyaaYirgitct3ypdFgjP-eZgaQv9w/exec'; 
+            // --- ส่วนที่อัปเดต: ใช้ URL ใหม่ที่ได้มา ---
+            const API_URL = 'https://script.google.com/macros/s/AKfycbztOuakQn2jtc8KLmI32FSLQ84ZJ6tLpXJSzLzP1stPfNLse6dRFfahmWT8PUpFi1Slbg/exec'; 
             
             // เรียกใช้งาน API ผ่าน Fetch
             fetch(API_URL + '?action=search&id=' + id)
